@@ -25,7 +25,7 @@
         <!-- Templates -->
         <script type="text/template" id="TodoViewTemplate">
             <div class="todo">
-                <input type="checkbox"> <span><%- title %></span>
+                <input type="checkbox"> <span><%- task %></span>
             </div>
         </script>
 
@@ -43,6 +43,7 @@
             <div class="todo-list">
                 <p>Things for today... (<span id="TodoListCounter"></span>)</p>
                 <ul id="TodoList"></ul>
+                <button id="clearDoneTasksBtn">Clear all done tasks</button>
             </div>
         </script>
 

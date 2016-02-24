@@ -4,13 +4,14 @@
     var Todo = Backbone.Model.extend({
         defaults: function(){
             return {
-                title: '',
+                task: '',
                 done: false
             };
         },
         toggle: function(){
             this.save({done: !this.get('done')});
-        }
+        },
+        localStorage: new Backbone.LocalStorage('todos')
     });
 
     var TodosCollection = Backbone.Collection.extend({
@@ -62,9 +63,9 @@
                 this.form.removeClass('invalid-input');
             }
 
-            // var todo = new Todo({ title: this.input.val() });
+            // var todo = new Todo({ task: this.input.val() });
             // Todos.add(todo);
-            Todos.create({ title: this.input.val() });
+            Todos.create({ task: this.input.val() });
             this.input.val('');
         }
     });
@@ -94,6 +95,19 @@
             var totalTodos = Todos.length;
             var notDoneYet = Todos.where({done: false}).length;
             this.TodoListCounter.text( notDoneYet + '/' + totalTodos );
+        },
+        events: {
+            'click #clearDoneTasksBtn': 'clearDoneTasks'
+        },
+        clearDoneTasks: function(){
+            var done = Todos.where({done: true});
+            Todos.remove(done);
+
+            _.each(done, function(model){
+                model.destroy();
+            });
+
+            this.updateCounter();
         }
     });
 
@@ -101,7 +115,7 @@
         tagName: 'li',
         template: _.template( $('#TodoViewTemplate').html() ),
         initialize: function(){
-
+            this.listenTo(this.model, 'destroy', this.remove);
         },
         render: function(){
             console.log('render TodoView');
@@ -117,6 +131,9 @@
         toggle: function(){
             this.model.toggle();
             this.render();
+        },
+        remove: function(){
+            this.$el.remove();
         }
     });
 
