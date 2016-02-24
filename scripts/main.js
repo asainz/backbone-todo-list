@@ -28,7 +28,6 @@
 
             this.NewTodoView.render();
             this.TodosListView.render();
-
             Todos.fetch();
         },
         render: function(){
@@ -75,16 +74,26 @@
         template: _.template( $('#TodosListTemplate').html() ),
         initialize: function(){
             this.listenTo(Todos, 'add', this.add);
+            this.listenTo(Todos, 'change', this.updateCounter);
+            this.listenToOnce(Todos, 'update', this.updateCounter);
         },
         render: function(){
-            this.$el.html( this.template() );
             console.log('render TodosListView');
+            this.$el.html( this.template() );
 
-            this.TodoList = $('#TodosList');
+            this.TodoList = $('#TodoList');
+            this.TodoListCounter = $('#TodoListCounter');
+
+            return this;
         },
         add: function(model){
             var todo = new TodoView({model: model});
             this.TodoList.append( todo.render().el );
+        },
+        updateCounter: function(){
+            var totalTodos = Todos.length;
+            var notDoneYet = Todos.where({done: false}).length;
+            this.TodoListCounter.text( notDoneYet + '/' + totalTodos );
         }
     });
 
@@ -95,10 +104,11 @@
 
         },
         render: function(){
+            console.log('render TodoView');
+
             this.$el.html( this.template( this.model.toJSON() ) );
             this.$el.find('input[type="checkbox"]').attr('checked', this.model.get('done'));
 
-            console.log('render TodoView');
             return this;
         },
         events: {
