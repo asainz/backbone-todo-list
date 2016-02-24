@@ -1,0 +1,57 @@
+* { box-sizing: border-box; }
+
+html, body{
+    margin: 0;
+    height: 100%;
+    background: #e2e2e2;
+}
+
+/* General Styles */
+
+input{
+    border: 1px solid #e2e2e2;
+}
+
+
+/* Helper Classes  */
+
+.invalid-input{
+    border: 2px solid tomato;
+}
+
+
+/* BEM Components */
+
+.app{
+
+}
+
+.app__content{
+    padding: 1em;
+}
+
+.nav{
+    background: #c0c0c0;
+}
+
+.nav__title{
+    margin: 0;
+    padding: 0;
+
+    text-align: center;
+}
+
+.new-todo-form{
+    
+}
+
+.new-todo-form input[type="submit"]{
+    display: block;
+    margin: 1em auto;
+}
+
+.new-todo-form label,
+.new-todo-form input[type="text"]{
+    display: block;
+    width: 100%;
+}

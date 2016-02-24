@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Todo</title>
+        <meta name="description" content="">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/base.css">
+    </head>
+
+    <body>
+        <div class="app" id="AppView">
+            <nav class="nav"><h1 class="nav__title">Todo</h1></nav>
+
+            <div class="app__content">
+                <div id="NewTodoView" class="new-todo-form">
+                    <form novalidate="novalidate" id="newTodoForm">
+                            <label for="newTodoInput">Enter a new todo</label>
+                            <input type="text" id="newTodoInput">
+                            <input type="submit" value="Add"/>
+                    </form>
+                </div>
+
+                <div id="TodosListView" class="todo-list">
+                    <p>Things for today...</p>
+                    <ol id="TodosList"></ol>
+                </div>
+            </div>
+        </div>
+
+        <script src="libs/jquery-2.2.1.min.js"></script>
+        <script src="libs/underscore.min.js"></script>
+        <script src="libs/backbone.js"></script>
+        <script src="libs/backbone.local-storage.min.js"></script>
+        <script src="scripts/main.js"></script>
+    </body>
+</html>
