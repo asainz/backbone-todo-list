@@ -60,3 +60,8 @@ ul, li{
     display: block;
     width: 100%;
 }
+
+
+.todo input[checked="checked"] + span{
+    text-decoration: line-through;
+}

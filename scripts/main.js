@@ -7,6 +7,9 @@
                 title: '',
                 done: false
             };
+        },
+        toggle: function(){
+            this.save({done: !this.get('done')});
         }
     });
 
@@ -93,8 +96,17 @@
         },
         render: function(){
             this.$el.html( this.template( this.model.toJSON() ) );
+            this.$el.find('input[type="checkbox"]').attr('checked', this.model.get('done'));
+
             console.log('render TodoView');
             return this;
+        },
+        events: {
+            'change input[type="checkbox"]': 'toggle'
+        },
+        toggle: function(){
+            this.model.toggle();
+            this.render();
         }
     });
 
