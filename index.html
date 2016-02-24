@@ -17,20 +17,32 @@
             <nav class="nav"><h1 class="nav__title">Todo</h1></nav>
 
             <div class="app__content">
-                <div id="NewTodoView" class="new-todo-form">
-                    <form novalidate="novalidate" id="newTodoForm">
-                        <label for="newTodoInput">Enter a new todo</label>
-                        <input type="text" id="newTodoInput">
-                        <input type="submit" value="Add"/>
-                    </form>
-                </div>
-
-                <div id="TodosListView" class="todo-list">
-                    <p>Things for today...</p>
-                    <ol id="TodosList"></ol>
-                </div>
+                <div id="NewTodoView"></div>
+                <div id="TodosListView"></div>
             </div>
         </div>
+
+        <!-- Templates -->
+        <script type="text/template" id="TodoViewTemplate">
+            <%- title %>
+        </script>
+
+        <script type="text/template" id="NewTodoTemplate">
+            <div class="new-todo-form">
+                <form novalidate="novalidate" id="newTodoForm">
+                    <label for="newTodoInput">Enter a new todo</label>
+                    <input type="text" id="newTodoInput">
+                    <input type="submit" value="Add"/>
+                </form>
+            </div>
+        </script>
+
+        <script type="text/template" id="TodosListTemplate">
+            <div class="todo-list">
+                <p>Things for today...</p>
+                <ul id="TodosList"></ul>
+            </div>
+        </script>
 
         <script src="libs/jquery-2.2.1.min.js"></script>
         <script src="libs/underscore.min.js"></script>

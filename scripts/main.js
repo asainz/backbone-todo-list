@@ -23,6 +23,9 @@
             this.NewTodoView = new NewTodoView;
             this.TodosListView = new TodosListView;
 
+            this.NewTodoView.render();
+            this.TodosListView.render();
+
             Todos.fetch();
         },
         render: function(){
@@ -31,11 +34,18 @@
 
     var NewTodoView = Backbone.View.extend({
         el: '#NewTodoView',
+        template: _.template( $('#NewTodoTemplate').html() ),
         initialize: function(){
-            this.input = $('#newTodoInput');
-            this.form = $('#newTodoForm');
+            
         },
         render: function(){
+            this.$el.html( this.template() );
+            console.log('render NewTodoView');
+
+            this.input = $('#newTodoInput');
+            this.form = $('#newTodoForm');
+
+            return this;
         },
         events: {
             'submit #newTodoForm': 'handleFormSubmit'
@@ -58,13 +68,16 @@
     });
 
     var TodosListView = Backbone.View.extend({
-        el: 'TodosListView',
+        el: '#TodosListView',
+        template: _.template( $('#TodosListTemplate').html() ),
         initialize: function(){
-            this.TodoList = $('#TodosList');
             this.listenTo(Todos, 'add', this.add);
         },
         render: function(){
+            this.$el.html( this.template() );
+            console.log('render TodosListView');
 
+            this.TodoList = $('#TodosList');
         },
         add: function(model){
             var todo = new TodoView({model: model});
@@ -74,7 +87,7 @@
 
     var TodoView = Backbone.View.extend({
         tagName: 'li',
-        template: _.template('<%- title %>'),
+        template: _.template( $('#TodoViewTemplate').html() ),
         initialize: function(){
 
         },
