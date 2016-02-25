@@ -77,6 +77,10 @@
             this.listenTo(Todos, 'add', this.add);
             this.listenTo(Todos, 'change', this.updateCounter);
             this.listenToOnce(Todos, 'update', this.updateCounter);
+
+            this.listenTo(Todos, 'add', this.updateClearButtonLabel);
+            this.listenTo(Todos, 'change', this.updateClearButtonLabel);
+            this.listenToOnce(Todos, 'update', this.updateClearButtonLabel);
         },
         render: function(){
             console.log('render TodosListView');
@@ -84,6 +88,9 @@
 
             this.TodoList = $('#TodoList');
             this.TodoListCounter = $('#TodoListCounter');
+            this.clearButton = $('#clearDoneTasksBtn');
+
+            this.updateClearButtonLabel();
 
             return this;
         },
@@ -108,6 +115,10 @@
             });
 
             this.updateCounter();
+            this.updateClearButtonLabel();
+        },
+        updateClearButtonLabel: function(){
+            this.clearButton.text('Clear ' + Todos.where({done: true}).length + ' done tasks');
         }
     });
 
