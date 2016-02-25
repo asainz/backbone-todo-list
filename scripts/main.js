@@ -1,20 +1,23 @@
-(function($, Backbone, _){
-    'use strict';
+'use strict';
 
-    var AppView = Backbone.View.extend({
-        el: '#AppView',
-        events: {},
-        initialize: function(){
-            this.NewTodoView = new NewTodoView;
-            this.TodosListView = new TodosListView;
+var NewTodoView = require('./todos/views/new');
+var TodosListView = require('./todos/views/list');
+var Todos = require('./todos/collections/todos');
+var Todo = require('./todos/models/todo');
 
-            this.NewTodoView.render();
-            this.TodosListView.render();
-            Todos.fetch();
-        },
-        render: function(){
-        }
-    });
+var AppView = Backbone.View.extend({
+    el: '#AppView',
+    events: {},
+    initialize: function(){
+        this.NewTodoView = new NewTodoView;
+        this.TodosListView = new TodosListView;
 
-    var App = new AppView;
-})($, Backbone, _);
+        this.NewTodoView.render();
+        this.TodosListView.render();
+        Todos.fetch();
+    },
+    render: function(){
+    }
+});
+
+new AppView;

@@ -1,10 +1,10 @@
-var Todos = (function(){
-    'use strict';
+'use strict';
 
-    var TodosCollection = Backbone.Collection.extend({
-        model: Todo,
-        localStorage: new Backbone.LocalStorage('todos')
-    });
+var Todo = require('../models/todo');
 
-    return new TodosCollection;
-})();
+var TodosCollection = Backbone.Collection.extend({
+    model: Todo,
+    localStorage: new Backbone.LocalStorage('todos')
+});
+
+module.exports = new TodosCollection;
