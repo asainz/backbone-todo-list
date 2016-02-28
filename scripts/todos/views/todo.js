@@ -1,3 +1,5 @@
+'use strict';
+
 var TodoView = Backbone.View.extend({
     tagName: 'li',
     template: Handlebars.compile( $('#TodoViewTemplate').html() ),
@@ -13,7 +15,8 @@ var TodoView = Backbone.View.extend({
         return this;
     },
     events: {
-        'change input[type="checkbox"]': 'toggle'
+        'change input[type="checkbox"]': 'toggle',
+        'click .SeeDetailsBtn': 'goToDetails'
     },
     toggle: function(){
         this.model.toggle();
@@ -21,6 +24,9 @@ var TodoView = Backbone.View.extend({
     },
     remove: function(){
         this.$el.remove();
+    },
+    goToDetails: function(){
+        console.log('go to details for ' + this.model.get('id'));
     }
 });
 

@@ -4,7 +4,8 @@ var Todo = Backbone.Model.extend({
     defaults: function(){
         return {
             task: '',
-            done: false
+            done: false,
+            id: _.unique()
         };
     },
     toggle: function(){
