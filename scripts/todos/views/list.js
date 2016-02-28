@@ -5,7 +5,7 @@ var TodoView = require('../views/todo');
 
 var TodosListView = Backbone.View.extend({
     el: '#TodosListView',
-    template: _.template( $('#TodosListTemplate').html() ),
+    template: Handlebars.compile( $('#TodosListTemplate').html() ),
     initialize: function(){
         this.listenTo(Todos, 'add', this.add);
         this.listenTo(Todos, 'change', this.updateCounter);

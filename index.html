@@ -25,7 +25,7 @@
         <!-- Templates -->
         <script type="text/template" id="TodoViewTemplate">
             <div class="todo">
-                <input type="checkbox"> <span><%- task %></span>
+                <input type="checkbox"/> <span>{{task}}</span> - <span class="SeeDetailsBtn">See details</span>
             </div>
         </script>
 
@@ -49,6 +49,7 @@
 
         <script src="libs/jquery-2.2.1.min.js"></script>
         <script src="libs/underscore.min.js"></script>
+        <script src="bower_components/handlebars/handlebars.min.js"></script>
         <script src="libs/backbone.js"></script>
         <script src="libs/backbone.local-storage.min.js"></script>
 
