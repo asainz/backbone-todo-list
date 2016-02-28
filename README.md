@@ -11,5 +11,6 @@ $ npm install -g webpack-dev-server
 # run development server
 
 ```
+$ gulp work
 $ webpack-dev-server
 ```
