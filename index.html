@@ -22,36 +22,13 @@
             </div>
         </div>
 
-        <!-- Templates -->
-        <script type="text/template" id="TodoViewTemplate">
-            <div class="todo">
-                <input type="checkbox"/> <span>{{task}}</span> - <span class="SeeDetailsBtn">See details</span>
-            </div>
-        </script>
-
-        <script type="text/template" id="NewTodoTemplate">
-            <div class="new-todo-form">
-                <form novalidate="novalidate" id="newTodoForm">
-                    <label for="newTodoInput">Enter a new todo</label>
-                    <input type="text" id="newTodoInput">
-                    <input type="submit" value="Add"/>
-                </form>
-            </div>
-        </script>
-
-        <script type="text/template" id="TodosListTemplate">
-            <div class="todo-list">
-                <p>Things for today... (<span id="TodoListCounter"></span>)</p>
-                <ul id="TodoList"></ul>
-                <button id="clearDoneTasksBtn">Clear all done tasks</button>
-            </div>
-        </script>
-
         <script src="libs/jquery-2.2.1.min.js"></script>
         <script src="libs/underscore.min.js"></script>
-        <script src="bower_components/handlebars/handlebars.min.js"></script>
+        <script src="bower_components/handlebars/handlebars.runtime.min.js"></script>
         <script src="libs/backbone.js"></script>
         <script src="libs/backbone.local-storage.min.js"></script>
+
+        <script src="precompiled-templates.js"></script>
 
         <script src="bundle.js"></script>
     </body>

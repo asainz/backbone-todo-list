@@ -2,7 +2,7 @@
 
 var TodoView = Backbone.View.extend({
     tagName: 'li',
-    template: Handlebars.compile( $('#TodoViewTemplate').html() ),
+    template: Templates.todo,
     initialize: function(){
         this.listenTo(this.model, 'destroy', this.remove);
     },

@@ -4,7 +4,7 @@ var Todos = require('../collections/todos');
 
 var NewTodoView = Backbone.View.extend({
     el: '#NewTodoView',
-    template: Handlebars.compile( $('#NewTodoTemplate').html() ),
+    template: Templates.new,
     initialize: function(){
         
     },

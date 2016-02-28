@@ -2,3 +2,4 @@ node_modules
 bundle.js
 *.map
 bower_components/
+precompiled-templates.js
